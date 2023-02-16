@@ -55,7 +55,7 @@ class Tasks extends Controller {
             
             if ($this->taskModel->update($data)) {
                 //Redirect to the login page
-                header('location: ' . URLROOT . '/pages/tasks');
+                header('location: ' . URLROOT . '/tasks/get_all_tasks');
             } else {
                 die('Something went wrong.');
             }
@@ -66,7 +66,7 @@ class Tasks extends Controller {
                 'status' => ''
             ];
         }
-        $this->view('pages/tasks', $data);
+        $this->view('tasks/get_all_tasks', $data);
     }
 
     public function get_all_tasks() {

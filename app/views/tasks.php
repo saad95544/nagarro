@@ -33,11 +33,14 @@
                         <td><?php echo $task['description']; ?></td>
                         <td><?php echo $task['created_on']; ?></td>
                         <td>
-                            <select value="<td><?php echo $task['status']; ?></td>">
-                                <option value="pending">Pending</option>
-                                <option value="completed">Completed</option>
-                                <option value="re-open">Re-Open</option>
+                            <form method="post" action="<?php echo URLROOT; ?>/tasks/update">
+                            <select name="status" onchange="this.form.submit()">
+                                <option value="pending" <?php if($task['status'] == 'pending') echo 'selected'; ?>>Pending</option>
+                                <option value="completed" <?php if($task['status'] == 'completed') echo 'selected'; ?>>Completed</option>
+                                <option value="re-open" <?php if($task['status'] == 're-open') echo 'selected'; ?>>Re-Open</option>
                             </select>
+                            <input type="hidden" name="id" value="<?php echo $task['id'] ?>">
+                            </form>
                         </td>
                     </tr>
                     <?php } ?>
