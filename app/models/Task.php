@@ -39,7 +39,8 @@ class Task {
     }
 
     public function getAllTasks($data) {
-        $this->db->query('SELECT * FROM tasks');
+        $this->db->query('SELECT * FROM tasks WHERE created_by = :created_by');
+        $this->db->bind(':created_by', $_SESSION['email']);
         $result = $this->db->resultSet();
         return $result;
     }
